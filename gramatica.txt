@@ -1,0 +1,23 @@
+inicioprograma
+fimprograma
+inteiro <variavel>
+fluatante <variavel>
+logico <variavel>
+Texto <variavel>
+para <variavel> de <numero> ate <numero>
+fimpara
+se <variavel> <op.relacional> <numero>
+senao
+fimse
+leia <variavel>
+escreva <variavel>
+mostre <texto>
+<variavel> := <variavel> <op.aritmetico> <variavel>
+<variavel> := $a-$z 
+<variavel> := <variavel>
+<variavel> := <numero>
+inicia com $
+no maximo 3 letras
+e não estar nas palavras reservadas
+libere <variavel>
+

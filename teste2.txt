@@ -1,0 +1,11 @@
+inicioprograma
+inteiro $a
+inteiro $b
+inteiro $c
+leia $a
+leia $b
+leia $c
+$a := $a + $b
+$a := $a + $c
+escreva $a
+fimprograma

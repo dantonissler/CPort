@@ -1,0 +1,8 @@
+inicioprograma
+inteiro $ab
+inteiro $xy
+$xy := 20
+para $ab de 1 ate 10
+    escreva $xy
+fimpara
+fimprograma

@@ -1,0 +1,37 @@
+inicioprograma
+   inteiro $x
+   inteiro $y
+   flutuante $a
+   flutuante $b
+   flutuante $c
+   mostre "Digite um valor para a:"
+   leia $a
+   mostre "Digite um valor para b:"
+   leia $b
+   $c := $a + $b
+   escreva $c
+   mostre "---------------------"
+   mostre "Digite valor de x"
+   leia $x
+   se $x = 50
+      mostre "valor de x"
+      escreva $x
+   senao
+	  mostre "Nao vou apresentar x"
+   fimse
+   para $x de 1 ate 7 
+      mostre "mostrando o valor de x"
+      escreva $x
+   fimpara
+
+   $a := 1
+   enquanto ($a < $b )
+       $a = $a + 1
+
+   fimenquanto
+
+   libere $a
+   libere $b
+   libere $c
+   
+fimprograma
