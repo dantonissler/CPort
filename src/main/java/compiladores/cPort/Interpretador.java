@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 /**
- * @author danton.issler
+ * 
  * @since 08/11/2020
  */
 public class Interpretador {
@@ -40,7 +40,7 @@ public class Interpretador {
 			erros += interpretarLinha(linha, nrlinha);
 		}
 		if (erros.length() > 0) {
-			System.out.println("Erros:" + erros);
+			System.err.println("Erros:" + erros);
 		}
 	}
 
@@ -78,10 +78,10 @@ public class Interpretador {
 	// identifica o inicio do programa
 	public String interpretarInicioPrograma(String palavra, String linha, Integer nrlinha) {
 		// a primeira palavra
-		if ((palavra.equals("inicioprograma") && nrlinha == 0)) { // ta certo
+		if ((palavra.equals("beginprog") && nrlinha == 0)) { // ta certo
 			return "";
 		}
-		if (!palavra.equals("inicioprograma")) {
+		if (!palavra.equals("beginprog")) {
 			return "";
 		}
 		return "Erro na linha " + nrlinha + ": Declaracao de inicio de programa errado.";
@@ -90,10 +90,10 @@ public class Interpretador {
 	// identifica o fim do programa
 	public String interpretarFimPrograma(String palavra, String linha, Integer nrlinha) {
 		// a ultima palavra
-		if (palavra.equals("fimprograma") && nrlinha == codigoFonte.size() - 1) {
+		if (palavra.equals("endprog") && nrlinha == codigoFonte.size() - 1) {
 			return "";
 		}
-		if (!palavra.equals("fimprograma")) {
+		if (!palavra.equals("endprog")) {
 			return "";
 		}
 		return "Erro: Fim de programa inválido na linha " + nrlinha;
@@ -102,7 +102,7 @@ public class Interpretador {
 	// processa inclusao do simbolo na tabela de simbolos
 	public String interpretarInteiro(String[] palavras, Integer nrlinha) {
 
-		if (palavras[0].equals("inteiro")) {
+		if (palavras[0].equals("int")) {
 
 			String nomeVariavel = palavras[1];
 			// se a variavel já existir na tabela de simbolos
@@ -116,7 +116,7 @@ public class Interpretador {
 
 	// processa a inclusao do simbolo na tabela de simbolos
 	public String interpretarFlutuante(String[] palavras, Integer nrlinha) {
-		if (palavras[0].equals("flutuante")) {
+		if (palavras[0].equals("float")) {
 			String nomeVariavel = palavras[1];
 			// se a variavel já existir na tabela de simbolos
 			if (ts.containsKey(nomeVariavel)) {
@@ -130,7 +130,7 @@ public class Interpretador {
 	// remove da tabela de simbolos
 	public String interpretarLibera(String[] palavras, Integer nrlinha) {
 
-		if (palavras[0].equals("inteiro") || palavras[0].equals("flutuante")) {
+		if (palavras[0].equals("int") || palavras[0].equals("float")) {
 
 			String nomeVariavel = palavras[1];
 			// se a variavel nao existir na tabela de simbolos
@@ -144,7 +144,7 @@ public class Interpretador {
 
 	// apresenta uma string na tela
 	public String interpretarMostre(String linha, Integer nrlinha) {
-		if (linha.startsWith("mostre")) {
+		if (linha.startsWith("print")) {
 			String str = linha.substring(7, linha.length() - 1);
 			str = str.replace("\"", "");
 			System.out.println(str);
@@ -155,7 +155,7 @@ public class Interpretador {
 
 	// captura um dado do teclado
 	public String interpretarLeia(String[] palavras, Integer nrlinha) {
-		if (!palavras[0].equals("leia")) {
+		if (!palavras[0].equals("input")) {
 			return "";
 		}
 		String nomeVariavel = palavras[1];
@@ -168,7 +168,7 @@ public class Interpretador {
 
 	// escreve um dado na tela
 	public String interpretarEscreva(String[] palavras, Integer nrlinha) {
-		if (palavras[0].startsWith("escreva")) {
+		if (palavras[0].startsWith("input")) {
 			String nomeVariavel = palavras[1];
 			String str = ts.get(nomeVariavel).toString();
 			System.out.println(str);
@@ -242,7 +242,7 @@ public class Interpretador {
 	public String interpretarSE(String[] palavras, Integer nrlinha) throws IOException {
 		int i = 0;
 		// verifica se não é um se entao encerra
-		if (!palavras[0].equals("se")) {
+		if (!palavras[0].equals("if")) {
 			return "";
 		} // contracao de if
 		Boolean resultado = calcularOperacaoRelacional(palavras[1], palavras[2], palavras[3]);
@@ -261,7 +261,7 @@ public class Interpretador {
 			this.ts = i2.ts;
 		}
 		i = nrlinha + 1; // procura o fimse e reposiciona o processamento
-		while (!codigoFonte.get(i).equals("fimse")) {
+		while (!codigoFonte.get(i).equals("else")) {
 			i++;
 		}
 		this.nrlinha = i; // reposiciona para a proxima linha depois do fim se
@@ -280,10 +280,10 @@ public class Interpretador {
 			if (temSenao) {
 				linhaBloco = codigoFonte.get(i);
 			}
-			if (codigoFonte.get(i).startsWith("senao")) {
+			if (codigoFonte.get(i).startsWith("else")) {
 				temSenao = true;
 			}
-			if (codigoFonte.get(i).startsWith("fimse")) {
+			if (codigoFonte.get(i).startsWith("endif")) {
 				break;
 			}
 			if (linhaBloco.length() > 0) // se tem conteudo para adicionar
@@ -301,10 +301,10 @@ public class Interpretador {
 		Integer i = nrlinha + 1;
 		while (i < codigoFonte.size()) {
 			String linhaBloco = codigoFonte.get(i);
-			if (codigoFonte.get(i).startsWith("senao")) {
+			if (codigoFonte.get(i).startsWith("else")) {
 				break;
 			}
-			if (codigoFonte.get(i).startsWith("fimse")) {
+			if (codigoFonte.get(i).startsWith("endif")) {
 				break;
 			}
 			if (linhaBloco.length() > 0) // se tem conteudo para adicionar
@@ -321,7 +321,7 @@ public class Interpretador {
 		Integer i = nrlinha + 1;
 		while (i < codigoFonte.size()) {
 			String linhaBloco = codigoFonte.get(i);
-			if (codigoFonte.get(i).startsWith("fimpara")) {
+			if (codigoFonte.get(i).startsWith("next")) {
 				break;
 			}
 			if (linhaBloco.length() > 0) // se tem conteudo para adicionar
@@ -371,7 +371,7 @@ public class Interpretador {
 	// interpretar o para
 	public String interpretarPara(String[] palavras, Integer nrlinha) throws IOException {
 		// bloqueia para outras instrucoes
-		if (!palavras[0].equals("para")) {
+		if (!palavras[0].equals("for")) {
 			return "";
 		}
 		// captura o nome da variavel na instrução para
@@ -391,7 +391,7 @@ public class Interpretador {
 		}
 		// reposico o controlador de linha
 		i = nrlinha + 1; // proxima linha
-		while (!codigoFonte.get(i).equals("fimpara")) {
+		while (!codigoFonte.get(i).equals("next")) {
 			i++;
 		}
 		this.nrlinha = i;

@@ -1,23 +1,20 @@
-inicioprograma
-fimprograma
-inteiro <variavel>
-fluatante <variavel>
-logico <variavel>
-Texto <variavel>
-para <variavel> de <numero> ate <numero>
-fimpara
-se <variavel> <op.relacional> <numero>
-senao
-fimse
-leia <variavel>
-escreva <variavel>
-mostre <texto>
+beginprog
+endprog
+declare <variavel> float
+declare <variavel> int
+print <texto>
+print <variavel>
+input <variavel>
+if <variavel> <op.aritmetico> <variavel>
+else
+endif
+for <variavel> <numero> to <numero>
+next
 <variavel> := <variavel> <op.aritmetico> <variavel>
 <variavel> := $a-$z 
 <variavel> := <variavel>
 <variavel> := <numero>
-inicia com $
+inicia com #
 no maximo 3 letras
 e não estar nas palavras reservadas
 libere <variavel>
-

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author danton.issler
+ * 
  * @since 08/11/2020
  */
 public class Lexico {
@@ -26,7 +26,7 @@ public class Lexico {
 		this.codigoFonte = arq_fonte.lerConteudo();
 		this.tokens = separarTokens(); // faz a separacao dos tokens
 		Integer quantidadeErros = validarTokens();
-		System.out.println("Total de erros: " + quantidadeErros);
+		System.err.println("Total de erros: " + quantidadeErros);
 		/*
 		 * System.out.println("------------------------Dicionario"); for(int
 		 * i=0;i < dicionario.size(); i++){ // percorrendo o conteudo
@@ -91,7 +91,7 @@ public class Lexico {
 				}
 			}
 			if (!valido) {
-				System.out.println("Token " + palavra + " invalido no termo:" + i);
+				System.err.println("Token " + palavra + " invalido no termo:" + i);
 				quantidadeErros++;
 			} else {
 				System.out.println("Token correto.." + palavra);

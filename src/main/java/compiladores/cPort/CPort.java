@@ -3,16 +3,17 @@ package compiladores.cPort;
 import java.io.IOException;
 
 /**
- * @author danton.issler
+ * 
  * @since 08/11/2020
  */
 public class CPort {
 	public static void main(String[] args) throws IOException {
-		// Scanner teclado = new Scanner(System.in);
-		// System.out.println("Digite o nome do arquivo fonte:");
-		// String nomeFonte = teclado.nextLine();
-		String nomeFonte = "exemplo.txt";
 
+//		Scanner a = new Scanner(System.in);
+//		System.err.println("Digite o nome do arquivo fonte:");
+//		String nomeFonte = a.nextLine();
+//		System.err.println(nomeFonte);
+		String nomeFonte = "exemplo.txt";
 		System.out.println("Analisando Lexicamente");
 		Lexico scanner = new Lexico();
 		scanner.AnalisarLexico(nomeFonte);

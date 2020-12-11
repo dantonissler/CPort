@@ -1,0 +1,21 @@
+prog exemplo
+mem #a float
+mem #b float
+mem #c int
+mem #d int
+mem #e int
+scre “Digite a:”
+kbrd #a
+scre “Digite b:”
+kbrd #b
+cond #a > #b
+scre #a
+else
+scre #b
+endcond
+scre “Digite c:”
+to #d 1 at 10
+#e = #c + #d * 3
+scre #e
+endto
+endprog

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author danton.issler
+ * 
  * @since 08/11/2020
  */
 public class Semantico {
@@ -29,7 +29,7 @@ public class Semantico {
 			// System.out.println(" (fim)");
 			numeroLinha++;
 		}
-		System.out.println("Quantidade de erros: " + erros);
+		System.err.println("Quantidade de erros: " + erros);
 	}
 
 	public String separarVariavel(String linha) {
@@ -49,7 +49,7 @@ public class Semantico {
 		String token = separarVariavel(linha.trim());
 		// System.out.println("\nToken: " + token);
 		if (!token.equals("()")) {
-			if (instrucao.equals("inteiro") || instrucao.equals("flutuante") || instrucao.equals("texto") || instrucao.equals("logico")) {
+			if (instrucao.equals("int") || instrucao.equals("float")) {
 				// guardar a variavel na tabela de simbolos
 				tabelaSimbolos.add(token);
 				// System.out.println("Adicionado na tabela de simbolos: " +
@@ -59,14 +59,14 @@ public class Semantico {
 					tabelaSimbolos.remove(token);
 				} else {
 					erros++;
-					System.out.println("Variavel não declarada na linha " + numeroLinha + " => " + token.toString());
+					System.err.println("Variavel não declarada na linha " + numeroLinha + " => " + token.toString());
 				}
 				// System.out.println("Removido da tabela de simbolos: " +
 				// token);
 			} else {
 				if (!tabelaSimbolos.contains(token)) {
 					erros++;
-					System.out.println("Variavel não declarada na linha " + numeroLinha + " => " + token.toString());
+					System.err.println("Variavel não declarada na linha " + numeroLinha + " => " + token.toString());
 				} else {
 					// System.out.println("Variavel esta na tabel de simbolos: "
 					// + token);
@@ -78,10 +78,10 @@ public class Semantico {
 
 	public int validarMostrar(String linha, String instrucao, int numeroLinha) {
 		int erros = 0;
-		if (instrucao.equals("mostre")) {
-			String nlinha = linha.replace("mostre", "").trim();
-			if (!(nlinha.startsWith("\"") && nlinha.endsWith("\""))) {
-				System.out.println("Mostre com String invalida na linha " + numeroLinha + " " + nlinha);
+		if (instrucao.equals("print")) {
+			String nlinha = linha.replace("print", "").trim();
+			if (!nlinha.startsWith("\"") && nlinha.endsWith("\"") && !nlinha.startsWith("#")) {
+				System.err.println("print com String invalida na linha " + numeroLinha + " " + nlinha);
 				erros++;
 			}
 		}

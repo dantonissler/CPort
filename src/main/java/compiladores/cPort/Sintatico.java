@@ -26,10 +26,10 @@ public class Sintatico {
 				}
 			}
 			if (!correto) {
-				System.out.println("Erro de sintaxe an Linha: " + linha);
+				System.err.println("Erro de sintaxe an Linha: " + linha);
 				quantidade++;
 			}
 		}
-		System.out.println("Quantidade erros: " + quantidade);
+		System.err.println("Quantidade erros: " + quantidade);
 	}
 }

@@ -1,0 +1,8 @@
+beginprog
+	declare #a int
+	#a = 28
+	for #d 28 to 72
+		print #a
+		#a = #a + 1
+	next
+endprog

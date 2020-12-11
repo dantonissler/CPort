@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author danton.issler
+ * 
  * @since 08/11/2020
  */
 public class Arquivo {

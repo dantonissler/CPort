@@ -1,37 +1,22 @@
-inicioprograma
-   inteiro $x
-   inteiro $y
-   flutuante $a
-   flutuante $b
-   flutuante $c
-   mostre "Digite um valor para a:"
-   leia $a
-   mostre "Digite um valor para b:"
-   leia $b
-   $c := $a + $b
-   escreva $c
-   mostre "---------------------"
-   mostre "Digite valor de x"
-   leia $x
-   se $x = 50
-      mostre "valor de x"
-      escreva $x
-   senao
-	  mostre "Nao vou apresentar x"
-   fimse
-   para $x de 1 ate 7 
-      mostre "mostrando o valor de x"
-      escreva $x
-   fimpara
-
-   $a := 1
-   enquanto ($a < $b )
-       $a = $a + 1
-
-   fimenquanto
-
-   libere $a
-   libere $b
-   libere $c
-   
-fimprograma
+beginprog
+	declare #a float
+	declare #b float
+	declare #c int
+	declare #d int
+	declare #e int
+	print "Digite a:"
+	input #a
+	print "Digite b:"
+	input #b
+	if #a > #b
+		print #a
+	else
+		print #b
+	endif
+	print "Digite c:"
+	input #c
+	for #d 1 to 10
+		#e = #c + #d * 3
+		print #e
+	next
+endprog
